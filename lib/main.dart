@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MyApp());
@@ -70,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //String assetName = "assets/icons/8541990_ghost_game_icon.svg";
     // This method is rerun every time setState is called, for instance as done
     // by the _incrementCounter method above.
     //
@@ -105,6 +107,10 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            SvgPicture.asset(
+            "icons/8541990_ghost_game_icon.svg",
+            width: 30, height: 30,
+            semanticsLabel: 'ghost'),
             const Text(
               'You have pushed the button this many times:',
             ),
