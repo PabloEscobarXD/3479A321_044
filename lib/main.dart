@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'MyHomePage.dart';
+import 'pages/MyHomePage.dart';
 
 var logger = Logger();
 
