@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/material.dart';
+import '../pages/ListContent.dart';
+import '../pages/About.dart';
+
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -20,7 +22,22 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
-
+  void _decrementCounter() {
+    setState(() {
+      _counter--;
+    });
+  }
+  void _resetCounter() {
+    setState(() {
+      _counter = 0;
+    });
+  }
+  void _changePage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const ListContent(title: 'ListContent')),
+    );
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,27 +47,56 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SvgPicture.asset(
-              assetName,
-              semanticsLabel: 'Dart Logo',
-              width: 50,
-              height: 50
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Card(
+            color: Colors.purpleAccent,
+            elevation: 50,
+            child: Column(
+              children: [
+                SvgPicture.asset(
+                  assetName,
+                  semanticsLabel: 'Dart Logo',
+                  width: 50,
+                  height: 50,
+                ),
+                const Text('Flutter es un FRAMEWORK!'),
+                Text('$_counter'),
+                const SizedBox(height:30, width: 300),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    TextButton(
+                    onPressed: _incrementCounter,
+                    child: const Icon(Icons.add, color: Colors.white),
+                    ),
+                    TextButton(
+                      onPressed: _decrementCounter,
+                      child: const Icon(Icons.remove, color: Colors.white),
+                    ),
+                    TextButton(
+                      onPressed: _resetCounter,
+                      child: const Icon(Icons.refresh, color: Colors.white),
+                    ),
+                  ]
+                ),
+                const SizedBox(height:30, width: 300)
+              ],
             ),
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+          ),
+          FloatingActionButton(
+          onPressed: _changePage,
+          tooltip: 'Ir a página',
+          child: Icon(Icons.arrow_right_alt_outlined),
+          )
+        ],
       ),
-      /*floatingActionButton: FloatingActionButton(
+      ),
+      /* floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ),*/
+      ),*/ // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
