@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import '../pages/MyHomePage.dart';
 import '../pages/About.dart';
 
 
@@ -27,7 +25,6 @@ class _ListContentState extends State<ListContent> {
       MaterialPageRoute(builder: (context) => const About(title: 'About')),
     );
     }
-
   }
 
   @override
